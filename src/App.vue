@@ -4,6 +4,7 @@
 		<LockScreen v-if="themeConfig.isLockScreen" />
 		<Setings ref="setingsRef" v-show="themeConfig.lockScreenTime > 1" />
 		<CloseFull v-if="!themeConfig.isLockScreen" />
+		<!-- 取消版本升级 -->
 		<Upgrade v-if="getVersion" />
 	</el-config-provider>
 </template>
@@ -41,7 +42,7 @@ const getVersion = computed(() => {
 		// @ts-ignore
 		if ((Local.get('version') && Local.get('version') !== __VERSION__) || !Local.get('version')) isVersion = true;
 	}
-	return isVersion;
+	return false;
 });
 // 获取全局组件大小
 const getGlobalComponentSize = computed(() => {
