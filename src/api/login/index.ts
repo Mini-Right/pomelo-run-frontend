@@ -16,9 +16,16 @@ export function useLoginApi() {
 				data,
 			});
 		},
+		signInLarkSuite: (params: object) => {
+			return request({
+				url: '/auth/lark_suite_login',
+				method: 'get',
+				params,
+			});
+		},
 		signOut: (data: object) => {
 			return request({
-				url: '/user/signOut',
+				url: '/user/logout',
 				method: 'post',
 				data,
 			});
