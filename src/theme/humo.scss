@@ -1,0 +1,112 @@
+.flex-space-between-center {
+	/* 居中两边排列 */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.flex-space-around-center {
+	/* 横向竖向居中 */
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.flex-wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-content-start {
+	/* 水平靠左 */
+	display: flex;
+	justify-content: flex-start;
+}
+.flex-content-end {
+	/* 水平靠右 */
+	display: flex;
+	justify-content: flex-end;
+}
+
+.flex-start {
+	/* 顶部对齐 */
+	display: flex;
+	align-items: flex-start;
+}
+
+.flex-space-between-start {
+	/* 顶部两边对齐 */
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.flex-end {
+	/* 底部两边对齐 */
+	display: flex;
+	align-items: flex-end;
+}
+
+.flex-space-between-end {
+	/* 底部两边对齐 */
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.flex-center-center {
+	/* 竖向横向居中 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-center {
+	/* 竖向居中 */
+	display: flex;
+	align-items: center;
+}
+.flex-content-center {
+	/* 竖向居中 */
+	display: flex;
+	align-content: center;
+}
+
+.flex-center-nowrap {
+	/* 竖向居中不换行 */
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.flex-center-center-nowrap {
+	/* 竖向居中不换行 */
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+
+.card-border-left-primary {
+	/* 卡片左侧样式 */
+	border-left: 5px solid var(--el-color-primary);
+}
+
+.card-border-left-success {
+	/* 卡片左侧样式 */
+	border-left: 5px solid var(--el-color-success);
+}
+
+.card-border-left-warning {
+	/* 卡片左侧样式 */
+	border-left: 5px solid var(--el-color-warning);
+}
+
+.card-border-left-danger {
+	/* 卡片左侧样式 */
+	border-left: 5px solid var(--el-color-danger);
+}
+
+.card-border-left-info {
+	/* 卡片左侧样式 */
+	border-left: 5px solid var(--el-color-info);
+}

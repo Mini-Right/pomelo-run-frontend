@@ -135,3 +135,11 @@ export function formatAxis(param: Date): string {
 	else if (hour < 22) return '晚上好';
 	else return '夜里好';
 }
+
+/**
+ * 获取当前日期时间
+ * @returns 返回当前日期时间字符串
+ */
+export function getCurrentDatetime(): string {
+	return formatDate(new Date(), 'YYYY-mm-dd HH:MM:SS');
+}

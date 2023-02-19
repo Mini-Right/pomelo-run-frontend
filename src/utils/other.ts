@@ -8,6 +8,7 @@ import { useThemeConfig } from '/@/stores/themeConfig';
 import { i18n } from '/@/i18n/index';
 import { Local } from '/@/utils/storage';
 import { verifyUrl } from '/@/utils/toolsValidate';
+import { ElNotification } from 'element-plus';
 
 // 引入组件
 const SvgIcon = defineAsyncComponent(() => import('/@/components/svgIcon/index.vue'));
@@ -173,6 +174,49 @@ export function handleOpenLink(val: RouteItem) {
 }
 
 /**
+ * 接口返回提示
+ * @param code 状态码
+ * @param msg 响应信息
+ */
+export function pomeloAPINotification(code: number, msg: string) {
+	if (code === 200) {
+		ElNotification({
+			title: '成功',
+			message: msg,
+			type: 'success',
+		});
+	} else {
+		ElNotification({
+			title: '失败',
+			message: msg,
+			type: 'error',
+		});
+	}
+	return code === 200;
+}
+
+export const datePickerDefaultTime = [new Date(2000, 1, 1, 0, 0, 0), new Date(2000, 2, 1, 23, 59, 59)];
+
+/**
+ * 判断数组是否包含
+ * @param array
+ * @param value
+ * @returns
+ */
+export function isArrayContain(array: Array<any>, value: any) {
+	return array.indexOf(value) !== -1 ? true : false;
+}
+
+/**
+ * 取消事件提示
+ */
+export function cancelEvent() {
+	ElNotification({
+		message: '感谢不杀之恩~',
+		type: 'success',
+	});
+}
+/**
  * 统一批量导出
  * @method elSvg 导出全局注册 element plus svg 图标
  * @method useTitle 设置浏览器标题国际化
@@ -212,6 +256,14 @@ const other = {
 	handleOpenLink: (val: RouteItem) => {
 		handleOpenLink(val);
 	},
+	pomeloAPINotification: (code: number, msg: string) => {
+		pomeloAPINotification(code, msg);
+	},
+	datePickerDefaultTime,
+	isArrayContain: (array: Array<any>, value: any) => {
+		isArrayContain(array, value);
+	},
+	cancelEvent,
 };
 
 // 统一批量导出

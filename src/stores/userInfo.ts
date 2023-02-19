@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import Cookies from 'js-cookie';
 import { Session } from '/@/utils/storage';
-
+import { publicAPI } from '/@/api/pomelo/public/index.ts';
 /**
  * 用户信息
  * @methods setUserInfos 设置用户信息
@@ -66,6 +66,41 @@ export const useUserInfo = defineStore('userInfo', {
 					resolve(userInfos);
 				}, 0);
 			});
+		},
+	},
+});
+
+/**
+ * 用户列表
+ */
+export const userList = defineStore('userList', {
+	state: () => {
+		return {
+			userOptions: [],
+			userChipMap: {},
+		};
+	},
+	actions: {
+		async get_user_list() {
+			const { user_info_list_api } = publicAPI();
+			const { data } = await user_info_list_api();
+			return data;
+		},
+		async resetUserOptions() {
+			const user_list = await this.get_user_list();
+			this.userOptions = user_list;
+		},
+		async resetUserChipMap() {
+			const user_list = await this.get_user_list();
+			let map = {};
+			for (let index = 0; index < user_list.length; index++) {
+				map[user_list[index].user_id] = user_list;
+			}
+			this.userChipMap = map;
+		},
+		async reset() {
+			await this.resetUserChipMap();
+			await this.resetUserOptions();
 		},
 	},
 });
