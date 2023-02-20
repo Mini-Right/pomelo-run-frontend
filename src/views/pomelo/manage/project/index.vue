@@ -2,7 +2,8 @@
 import { ref, onMounted, defineAsyncComponent } from 'vue';
 import { state } from '/@/views/pomelo/manage/project/config.ts';
 import { handleQuery } from '/@/views/pomelo/manage/project/config.ts';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const ProjectEditDialog = defineAsyncComponent(() => import('/@/views/pomelo/manage/project/components/ProjectEditDialog.vue'));
 const ProjectEditDialogRef = ref();
 const Chip = defineAsyncComponent(() => import('/@/components/pomelo/chip.vue'));
@@ -12,6 +13,17 @@ const Chip = defineAsyncComponent(() => import('/@/components/pomelo/chip.vue'))
  */
 const openEditDialog = (project_id: string | null) => {
 	ProjectEditDialogRef.value.openDialog(project_id);
+};
+
+/**
+ * 管理环境
+ */
+const manageEnv = (project_id: string) => {
+	const params: EmptyObjectType = { project_id: project_id };
+	router.push({
+		name: 'manageEnvironment',
+		query: params,
+	});
 };
 
 onMounted(() => {
@@ -37,7 +49,7 @@ onMounted(() => {
 					新增项目
 				</el-button>
 			</div>
-			<el-table :data="state.tableData" style="width: 100%" size="default">
+			<el-table :data="state.tableData" v-loading="state.loading" style="width: 100%" size="default">
 				<el-table-column type="index" label="序号" width="60" />
 				<el-table-column prop="project_name" label="项目名称" show-overflow-tooltip></el-table-column>
 				<el-table-column prop="remark" label="描述" show-overflow-tooltip></el-table-column>
@@ -54,6 +66,7 @@ onMounted(() => {
 				<el-table-column fixed="right" label="操作" width="120">
 					<template #default="{ row }">
 						<el-button link type="warning" size="small" @click="openEditDialog(row.project_id)">编辑</el-button>
+						<el-button link type="primary" size="small" @click="manageEnv(row.project_id)">管理环境</el-button>
 					</template>
 				</el-table-column>
 			</el-table>

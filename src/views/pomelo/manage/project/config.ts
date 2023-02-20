@@ -9,6 +9,7 @@ export const state = reactive({
 		project_name: '',
 	},
 	tableData: [],
+	loading: false,
 });
 
 /**
@@ -16,8 +17,10 @@ export const state = reactive({
  */
 export const handleQuery = async () => {
 	state.tableData = [];
+	state.loading = true;
 	const { code, data: tableData, msg } = await project_query_api(state.form);
 	if (pomeloAPINotification(code, msg)) {
 		state.tableData = tableData;
 	}
+	state.loading = false;
 };

@@ -108,6 +108,21 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 							icon: 'iconfont icon-caidan',
 						},
 					},
+					{
+						path: '/manage/environment',
+						name: 'manageEnvironment',
+						component: () => import('/@/views/pomelo/manage/environment/index.vue'),
+						meta: {
+							title: '环境管理',
+							isLink: '',
+							isHide: false,
+							isKeepAlive: true,
+							isAffix: false,
+							isIframe: false,
+							roles: ['admin', 'common'],
+							icon: 'iconfont icon-caidan',
+						},
+					},
 				],
 			},
 			{
