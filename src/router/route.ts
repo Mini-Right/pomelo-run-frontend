@@ -123,6 +123,21 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 							icon: 'iconfont icon-caidan',
 						},
 					},
+					{
+						path: '/manage/address',
+						name: 'manageAddress',
+						component: () => import('/@/views/pomelo/manage/address/index.vue'),
+						meta: {
+							title: '地址管理',
+							isLink: '',
+							isHide: false,
+							isKeepAlive: true,
+							isAffix: false,
+							isIframe: false,
+							roles: ['admin', 'common'],
+							icon: 'iconfont icon-caidan',
+						},
+					},
 				],
 			},
 			{
